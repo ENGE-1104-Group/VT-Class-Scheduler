@@ -22,7 +22,7 @@ public class Section
     private int hrs;
     private String capacity;
     private String instructor;
-    private String days;
+    private ArrayList<Day> days;
     private Time begin;
     private Time end;
     private String location;
@@ -104,7 +104,7 @@ public class Section
     /**
      * @return the days
      */
-    public String getDays()
+    public ArrayList<Day> getDays()
     {
         return days;
     }
@@ -234,9 +234,17 @@ public class Section
     /**
      * @param days the days to set
      */
-    public void setDays(String days)
+    public void setDays(ArrayList<Day> days)
     {
         this.days = days;
+    }
+
+    /**
+     * @param day the day to add
+     */
+    public void addDay(Day day)
+    {
+        days.add(day);
     }
 
 
