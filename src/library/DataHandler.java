@@ -62,9 +62,28 @@ public class DataHandler
      */
     public String removeTags(String str)
     {
-        //TODO: Implement this.  Use String.replaceAll(regex, replace)
+        //str.replaceAll("<+[^>]+>", "");
+        int index = 0;
+        String finalString = "";
+        while(index < str.length())
+        {
+            if(str.charAt(index) == '<')
+            {
+                while(str.charAt(index) != '>')
+                {
+                    index++;
+                }
+                index++;
+            }
+            else
+            {
+                finalString += str.substring(index, index+1);
+                index++;
+            }
+        }
 
-        return str;
+        return finalString;
+        //return str;
     }
 
     /**
