@@ -1,5 +1,7 @@
 package library;
 
+import java.util.List;
+
 /**
  * // -------------------------------------------------------------------------
 /**
@@ -102,5 +104,18 @@ public class DataHandler
         //TODO: Implement this. Regex is possible, but there are also other ways
 
         return str;
+    }
+
+    /**
+     * Parses the cleaned Timetable data string into a list of Section objects
+     * @param cleanedTimetable the cleaned Timetable data string
+     * @return the List of Sections
+     */
+    public List<Section> parseString(String cleanedTimetable)
+    {
+        //TODO Implement this method
+
+        //return null for now
+        return null;
     }
 }
