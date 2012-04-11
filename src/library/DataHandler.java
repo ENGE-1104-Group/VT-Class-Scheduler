@@ -51,7 +51,13 @@ public class DataHandler
     public String cutData(String str)
     {
         //TODO: Implement this.  Maybe use substrings?
-
+    	int index, index2;
+    	index2=str.indexOf("</html>");
+    	index=str.indexOf("</HTML>");
+    	if (index2==-1)
+    		str=str.substring(index+7,str.length());
+    	if (index==-1)
+    		str=str.substring(index2+7,str.length());
         return str;
     }
 

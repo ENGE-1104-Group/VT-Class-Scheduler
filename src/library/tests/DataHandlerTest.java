@@ -37,9 +37,9 @@ public class DataHandlerTest
         String data2 = "<HTML>asdf\n<b>asdf</b> </HTML>\n<p>123";
         String data3 = "<html>asdf\nasdf </html>\n<p>123";
         String data4 = "<html>asdf\nasdf \n<p>123</html>";
-        assertEquals(" 0123", dh.cutData(data1));
-        assertEquals("<p>123", dh.cutData(data2));
-        assertEquals("<p>123", dh.cutData(data3));
+        assertEquals("\n 123", dh.cutData(data1));
+        assertEquals("\n<p>123", dh.cutData(data2));
+        assertEquals("\n<p>123", dh.cutData(data3));
         assertEquals("", dh.cutData(data4));
 
         //TODO: Add more test cases
