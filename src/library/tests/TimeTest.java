@@ -15,7 +15,7 @@ import org.junit.Test;
  */
 public class TimeTest
 {
-    public Time astart, aend, bstart, bend, cstart, cend, dstart, dend;
+    private Time astart, aend, bstart, bend, cstart, cend, dstart, dend;
 
     /**
      * This method sets up the testing environment
@@ -40,12 +40,28 @@ public class TimeTest
     @Test
     public void testIsOverlap()
     {
-        assertTrue(astart.isOverlap(astart, aend, bstart, bend));
-        assertTrue(astart.isOverlap(bstart, bend, astart, aend));
-        assertFalse(astart.isOverlap(cstart, cend, dstart, dend));
+        assertTrue(Time.isOverlap(astart, aend, bstart, bend));
+        assertTrue(Time.isOverlap(bstart, bend, astart, aend));
+        assertFalse(Time.isOverlap(cstart, cend, dstart, dend));
         //assertTrue(astart.isOverlap(astart, aend, cstart, cend));
         //assertTrue(astart.isOverlap(dstart, dend, bstart, bend));
         //assertFalse(astart.isOverlap(dstart, dend, astart, aend));
         //assertFalse(astart.isOverlap(astart, aend, dstart, dend));
+
+
+        //tests Chris added
+        assertFalse(Time.isOverlap(new Time(8,00), new Time(8,50),
+            new Time(9,05), new Time(9,55)));
+        assertFalse(Time.isOverlap(new Time(9,05), new Time(9,55),
+            new Time(8,00), new Time(8,50))); //swap above
+        assertTrue(Time.isOverlap(new Time(8,00), new Time(9,30),
+            new Time(9,05), new Time(9,55)));
+        assertTrue(Time.isOverlap(new Time(9,05), new Time(9,55),
+            new Time(8,00), new Time(9,30))); //swap above
+        assertTrue(Time.isOverlap(new Time(8,00), new Time(11,00),
+            new Time(9,05), new Time(9,55)));
+        assertTrue(Time.isOverlap(new Time(9,05), new Time(9,55),
+            new Time(8,00), new Time(11,00))); //swap above
+
     }
 }
