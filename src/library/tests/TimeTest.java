@@ -1,5 +1,7 @@
 package library.tests;
 
+import static org.junit.Assert.*;
+import library.Time;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +15,7 @@ import org.junit.Test;
  */
 public class TimeTest
 {
-
+    public Time astart, aend, bstart, bend, cstart, cend, dstart, dend;
 
     /**
      * This method sets up the testing environment
@@ -21,7 +23,15 @@ public class TimeTest
     @Before
     public void setUp()
     {
-        //TODO: Implement setUp() if necessary
+        astart = new Time(2, 30);
+        aend = new Time(3, 45);
+        bstart = new Time(3, 30);
+        bend = new Time(4, 45);
+        cstart = new Time(2, 30);
+        cend = new Time(3, 45);
+        dstart = new Time(4, 0);
+        dend = new Time (5, 15);
+
     }
 
     /**
@@ -30,6 +40,9 @@ public class TimeTest
     @Test
     public void testIsOverlap()
     {
-        //TODO: Implement testIsOverlap()
+        assertTrue(astart.isOverlap(astart, aend, bstart, bend));
+        assertTrue(astart.isOverlap(astart, aend, cstart, cend));
+        assertTrue(astart.isOverlap(dstart, dend, bstart, bend));
+        assertFalse(astart.isOverlap(astart, aend, dstart, dend));
     }
 }

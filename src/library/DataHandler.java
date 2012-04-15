@@ -101,8 +101,7 @@ public class DataHandler
      */
     public String removeEmptyLines(String str)
     {
-        //TODO: Implement this. Regex is possible, but there are also other ways
-
+        String[] a = str.split("\n");
         return str;
     }
 
