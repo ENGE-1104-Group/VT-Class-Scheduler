@@ -54,7 +54,7 @@ public class Time
     public static boolean isOverlap(Time firstBegin, Time firstEnd,
                                     Time secondBegin, Time secondEnd)
     {
-        if (firstEnd.getHour() > secondBegin.getHour())
+        if (firstEnd.getHour() > secondBegin.getHour() || secondEnd.getHour() > firstBegin.getHour())
             return true;
 
         else if (firstEnd.getHour() == secondBegin.getHour())

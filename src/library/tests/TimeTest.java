@@ -41,8 +41,11 @@ public class TimeTest
     public void testIsOverlap()
     {
         assertTrue(astart.isOverlap(astart, aend, bstart, bend));
-        assertTrue(astart.isOverlap(astart, aend, cstart, cend));
-        assertTrue(astart.isOverlap(dstart, dend, bstart, bend));
-        assertFalse(astart.isOverlap(astart, aend, dstart, dend));
+        assertTrue(astart.isOverlap(bstart, bend, astart, aend));
+        assertFalse(astart.isOverlap(cstart, cend, dstart, dend));
+        //assertTrue(astart.isOverlap(astart, aend, cstart, cend));
+        //assertTrue(astart.isOverlap(dstart, dend, bstart, bend));
+        //assertFalse(astart.isOverlap(dstart, dend, astart, aend));
+        //assertFalse(astart.isOverlap(astart, aend, dstart, dend));
     }
 }
