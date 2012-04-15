@@ -16,7 +16,7 @@ public class Time
 
     /**
      * Constructs a new Time object
-     * @param h the hour of this time
+     * @param h the hour of this time in 24 hour time style
      * @param m the minute of this time
      */
     public Time(int h, int m)
