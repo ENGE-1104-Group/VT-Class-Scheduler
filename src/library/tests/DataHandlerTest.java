@@ -67,11 +67,28 @@ public class DataHandlerTest
     public void testRemoveEmptyLines()
     {
         //String data1 = "\nasdf\n";
-        String data2 = "asdf123";
-        String data3 = "\n12\n42\nB Snyder\nMCB 113\n";
 
         //assertEquals("asdf", dh.removeEmptyLines(data1));
-        assertEquals("asdf123", dh.removeEmptyLines(data2));
-        assertEquals("12\n42\nB Snyder\nMCB 113", dh.removeEmptyLines(data3));
+
+        String data2 = "asdf123";
+
+        String[] expected2 = {"asdf123"};
+        String[] returned2 = dh.splitAndRemoveEmptyLines(data2);
+
+        assertNotNull(returned2);
+        assertEquals(expected2.length, returned2.length);
+        assertEquals(expected2[0], returned2[0]);
+
+        String data3 = "\n12\n42\nB Snyder\nMCB 113\n";
+
+        String[] expected3 = {"12","42","B Snyder","MCB 113"};
+        String[] returned3 = dh.splitAndRemoveEmptyLines(data3);
+
+        assertNotNull(returned3);
+        assertEquals(expected3.length, returned3.length);
+        for (int i=0; i < expected3.length; i++)
+        {
+            assertEquals(expected3[i], returned3[i]);
+        }
     }
 }

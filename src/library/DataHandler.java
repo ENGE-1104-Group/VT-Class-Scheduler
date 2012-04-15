@@ -31,7 +31,10 @@ public class DataHandler
         {
             data = cutData(data);              //cut to </HTML>
             data = removeTags(data);           //remove tags
-            data = removeEmptyLines(data);     //remove empty lines
+
+            String dataArray[];
+            dataArray = splitAndRemoveEmptyLines(data);     //remove empty lines
+
             //make sure it isnt an error
             //make list of sections (parse)
         }
@@ -95,14 +98,31 @@ public class DataHandler
     }
 
     /**
-     * Removes all empty lines
+     * Splits and removes empty lines
      * @param str String to remove empty lines from
-     * @return The input String with the empty lines removed
+     * @return processed String array without empty entries
      */
-    public String removeEmptyLines(String str)
+    public String[] splitAndRemoveEmptyLines(String str)
     {
-        String[] a = str.split("\n");
-        return str;
+        String[] data = str.split("\n");
+
+        //count the non-empty entries
+        int count = 0;
+        for (int i=0; i < data.length; i++)
+        {
+            if (!data[i].equals(""))
+                count++;
+        }
+
+        String ret[] = new String[count];
+        count = 0;
+        for (int i=0; i < data.length; i++)
+        {
+            if (!data[i].equals(""))
+                ret[count++] = data[i];
+        }
+
+        return ret;
     }
 
     /**
