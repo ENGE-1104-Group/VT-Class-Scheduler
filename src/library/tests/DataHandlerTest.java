@@ -64,7 +64,7 @@ public class DataHandlerTest
      * Tests the removeEmptyLines method
      */
     @Test
-    public void testRemoveEmptyLines()
+    public void testSplitAndRemoveEmptyLines()
     {
         //String data1 = "\nasdf\n";
 
