@@ -1,5 +1,6 @@
 package library;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -130,11 +131,166 @@ public class DataHandler
      * @param cleanedTimetable the cleaned Timetable data string
      * @return the List of Sections
      */
-    public List<Section> parseString(String cleanedTimetable)
+    public List<Section> parseString(String[] cleanedTimetable)
     {
-        //TODO Implement this method
+
+        Section currentSection;
+        int index = 0;
+
+        //parse sections
+        //while there is another section
+        while ((index = nextCRN(cleanedTimetable, index)) != -1)
+        {
+            currentSection = new Section();
+
+            //start parsing
+            parseCRN(cleanedTimetable, index, currentSection);
+            parseCourse(cleanedTimetable, index, currentSection);
+            parseTitle(cleanedTimetable, index, currentSection);
+            parseType(cleanedTimetable, index, currentSection);
+            parseHrs(cleanedTimetable, index, currentSection);
+            parseCapacity(cleanedTimetable, index, currentSection);
+            parseInstructor(cleanedTimetable, index, currentSection);
+            parseDays(cleanedTimetable, index, currentSection);
+            parseBegin(cleanedTimetable, index, currentSection);
+            parseEnd(cleanedTimetable, index, currentSection);
+            parseLocation(cleanedTimetable, index, currentSection);
+            parseExam(cleanedTimetable, index, currentSection);
+            //handle Additional Times
+        }
 
         //return null for now
         return null;
     }
+
+
+
+    public int nextCRN(String[] cleanedTimetable, int index)
+    {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    public void parseCRN(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseCourse(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseTitle(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseType(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseHrs(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseCapacity(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseInstructor(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseDays(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseBegin(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseEnd(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseLocation(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public void parseExam(
+        String[] cleanedTimetable,
+        int index,
+        Section currentSection)
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+
+
 }
