@@ -1,5 +1,6 @@
 package library;
 
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,6 +136,7 @@ public class DataHandler
     {
 
         Section currentSection;
+        List<Section> sectionList = new LinkedList<Section>();
         int index = 0;
 
         //parse sections
@@ -156,11 +158,14 @@ public class DataHandler
             parseEnd(cleanedTimetable, index, currentSection);
             parseLocation(cleanedTimetable, index, currentSection);
             parseExam(cleanedTimetable, index, currentSection);
+
             //handle Additional Times
+
+            sectionList.add(currentSection);
         }
 
         //return null for now
-        return null;
+        return sectionList;
     }
 
 
