@@ -43,10 +43,10 @@ public class TimeTest
         assertTrue(Time.isOverlap(astart, aend, bstart, bend));
         assertTrue(Time.isOverlap(bstart, bend, astart, aend));
         assertFalse(Time.isOverlap(cstart, cend, dstart, dend));
-        assertTrue(astart.isOverlap(astart, aend, cstart, cend));
-        assertTrue(astart.isOverlap(dstart, dend, bstart, bend));
-        assertFalse(astart.isOverlap(dstart, dend, astart, aend));
-        assertFalse(astart.isOverlap(astart, aend, dstart, dend));
+        assertTrue(Time.isOverlap(astart, aend, cstart, cend));
+        assertTrue(Time.isOverlap(dstart, dend, bstart, bend));
+        assertFalse(Time.isOverlap(dstart, dend, astart, aend));
+        assertFalse(Time.isOverlap(astart, aend, dstart, dend));
 
 
         //tests Chris added
