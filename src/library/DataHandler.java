@@ -100,6 +100,20 @@ public class DataHandler
     }
 
     /**
+     * Removes remaining junk (nbsp, ;, etc)
+     * @param str String to remove junk from
+     * @return processed String without junk
+     */
+    public String removeJunk(String str)
+    {
+        while (str.contains("&nbsp"))
+        {
+            str.replaceAll("&nbsp", "");
+        }
+        return str;
+    }
+
+    /**
      * Splits and removes empty lines
      * @param str String to remove empty lines from
      * @return processed String array without empty entries

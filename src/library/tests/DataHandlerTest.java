@@ -60,6 +60,8 @@ public class DataHandlerTest
         assertEquals("123", dh.removeTags(data3));
     }
 
+
+
     /**
      * Tests the removeEmptyLines method
      */
