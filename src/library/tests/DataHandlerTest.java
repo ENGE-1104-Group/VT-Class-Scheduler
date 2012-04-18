@@ -1,6 +1,7 @@
 package library.tests;
 
 import static org.junit.Assert.*;
+import library.Section;
 import org.junit.Test;
 import library.DataHandler;
 import org.junit.Before;
@@ -17,6 +18,7 @@ public class DataHandlerTest
 {
 
     DataHandler dh;
+    Section testSection;
 
     /**
      * Sets up for the tests
@@ -25,6 +27,7 @@ public class DataHandlerTest
     public void setUp()
     {
         dh = new DataHandler();
+        testSection = new Section();
     }
 
     /**
@@ -123,6 +126,28 @@ public class DataHandlerTest
     @Test
     public void testNextCRN()
     {
+        String data1[] = {  "Campus: Blacksburg - Term: Fall Semester 2012",
+                            "CRN ?",
+                            "Course",
+                            "Title",
+                            "Type ? ",
+                            "Cr Hrs",
+                            "Capacity",
+                            "Instructor",
+                            "Days ? ",
+                            "Begin",
+                            "End",
+                            "Location ? ",
+                            "Exam",
+                            "92084",
+                            "ECE-1574"};
+
+        int expected1 = 13;
+        int returned1 = dh.nextCRN(data1, 0);
+
+        assertEquals(expected1, returned1);
+        assertEquals(-1, dh.nextCRN(data1, 13));
+
 
     }
 
@@ -132,6 +157,14 @@ public class DataHandlerTest
     @Test
     public void testParseCRN()
     {
+        String data1[] = {"12345","22222"};
+
+        assertEquals(0, testSection.getCrn());
+        dh.parseCRN(data1, 0, testSection);
+        assertEquals(12345, testSection.getCrn());
+
+        dh.parseCRN(data1, 1, testSection);
+        assertEquals(22222, testSection.getCrn());
 
     }
 
