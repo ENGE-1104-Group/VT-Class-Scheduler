@@ -120,6 +120,7 @@ public class DataHandlerTest
     /**
      * tests the nextCRN() method
      */
+    @Test
     public void testNextCRN()
     {
 
@@ -128,61 +129,106 @@ public class DataHandlerTest
     /**
      * tests the parseCRN() method
      */
+    @Test
     public void testParseCRN()
     {
 
     }
 
+    /**
+     * tests the parseCourse() method
+     */
+    @Test
     public void testParseCourse()
     {
 
     }
 
+    /**
+     * tests the parseTitle() method
+     */
+    @Test
     public void testParseTitle()
     {
 
     }
 
+    /**
+     * tests the parseType() method
+     */
+    @Test
     public void testParseType()
     {
 
     }
 
+    /**
+     * tests the parseHrs() method
+     */
+    @Test
     public void testParseHrs()
     {
 
     }
 
+    /**
+     * tests the parseCapacity() method
+     */
+    @Test
     public void testParseCapacity()
     {
 
     }
 
+    /**
+     * tests the parseInstructor() method
+     */
+    @Test
     public void testParseInstructor()
     {
 
     }
 
+    /**
+     * tests the parseDays() method
+     */
+    @Test
     public void testParseDays()
     {
 
     }
 
+    /**
+     * tests the parseBegin() method
+     */
+    @Test
     public void testParseBegin()
     {
 
     }
 
+    /**
+     * tests the parseEnd() method
+     */
+    @Test
     public void testParseEnd()
     {
 
     }
 
+    /**
+     * tests the parseLocation() method
+     */
+    @Test
     public void testParseLocation()
     {
 
     }
 
+    /**
+     * tests the parseExam() method
+     */
+    @Test
     public void testParseExam()
     {
 
