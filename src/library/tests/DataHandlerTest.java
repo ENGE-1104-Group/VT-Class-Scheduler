@@ -91,4 +91,27 @@ public class DataHandlerTest
             assertEquals(expected3[i], returned3[i]);
         }
     }
+
+    /**
+     * Tests the removeGarbage() method
+     */
+    @Test
+    public void testRemoveGarbage()
+    {
+        String data1 = "95564&nbsp";
+        String data2 = "&nbsp;";
+        String data3 = "asdf&nbsp\nL\n&nbsp;\n40";
+
+        String expected1 = "95564";
+        String expected2 = "";
+        String expected3 = "asdf\nL\n\n40";
+
+        String returned1 = dh.removeGarbage(data1);
+        String returned2 = dh.removeGarbage(data2);
+        String returned3 = dh.removeGarbage(data3);
+
+        assertEquals(expected1, returned1);
+        assertEquals(expected2, returned2);
+        assertEquals(expected3, returned3);
+    }
 }
