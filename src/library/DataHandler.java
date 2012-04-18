@@ -169,20 +169,39 @@ public class DataHandler
     }
 
 
-
+    /**
+     * Gets the array index of the next CRN, after the specified index.
+     * @param cleanedTimetable cleaned data array
+     * @param index index to start looking for the next CRN after
+     * @return the index of the next CRN, or -1 if not found
+     */
     public int nextCRN(String[] cleanedTimetable, int index)
     {
         // TODO Auto-generated method stub
         return 0;
     }
 
-
+    /**
+     * Parses the next CRN and adds that data to the current Section
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the CRN
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its CRN populated
+     */
     public void parseCRN(
         String[] cleanedTimetable,
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        //assumes that a CRN is 5 digits long
+        //assumes the CRN field starts with a CRN digit (and not a space)
+        String crnString = cleanedTimetable[index];
+        if (crnString.contains("&nbsp"))
+        {
+            crnString = crnString.substring(0, crnString.indexOf("&nbsp"));
+        }
+        int crnInt = Integer.parseInt(crnString);
+        currentSection.setCrn(crnInt);
 
     }
 
