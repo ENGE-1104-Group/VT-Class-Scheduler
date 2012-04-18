@@ -7,7 +7,7 @@ package library;
  *  starts and ends.
  *
  *  @author cmbuck
- *  @version Apr 15, 2012
+ *  @version Apr 17, 2012
  */
 public class Time
 {
