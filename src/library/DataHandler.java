@@ -227,8 +227,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
-
+    	String courseString = cleanedTimetable[index];
+    	currentSection.setCourse(courseString);
     }
 
 
@@ -237,7 +237,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String titleString = cleanedTimetable[index];
+        currentSection.setTitle(titleString);
 
     }
 
@@ -247,7 +248,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String typeString = cleanedTimetable[index];
+        currentSection.setType(typeString);
 
     }
 
@@ -267,7 +269,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String capacityString = cleanedTimetable[index];
+        currentSection.setCapacity(capacityString);
 
     }
 
@@ -277,7 +280,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String instructorString = cleanedTimetable[index];
+        currentSection.setInstructor(instructorString);
 
     }
 
@@ -317,7 +321,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String locationString = cleanedTimetable[index];
+        currentSection.setLocation(locationString);
 
     }
 
@@ -327,7 +332,8 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String examString = cleanedTimetable[index];
+        currentSection.setExam(examString);
 
     }
 
