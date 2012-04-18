@@ -104,12 +104,14 @@ public class DataHandler
      * @param str String to remove junk from
      * @return processed String without junk
      */
-    public String removeJunk(String str)
+    public String removeGarbage(String str)
     {
         while (str.contains("&nbsp"))
         {
-            str.replaceAll("&nbsp", "");
+            str = str.replaceAll("&nbsp;", "");
+            str = str.replaceAll("&nbsp", "");
         }
+
         return str;
     }
 
