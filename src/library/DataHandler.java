@@ -212,10 +212,7 @@ public class DataHandler
         //assumes that a CRN is 5 digits long
         //assumes the CRN field starts with a CRN digit (and not a space)
         String crnString = cleanedTimetable[index];
-        if (crnString.contains("&nbsp"))
-        {
-            crnString = crnString.substring(0, crnString.indexOf("&nbsp"));
-        }
+
         int crnInt = Integer.parseInt(crnString);
         currentSection.setCrn(crnInt);
 
