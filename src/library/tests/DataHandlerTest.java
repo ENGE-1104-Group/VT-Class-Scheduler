@@ -116,4 +116,75 @@ public class DataHandlerTest
         assertEquals(expected2, returned2);
         assertEquals(expected3, returned3);
     }
+
+    /**
+     * tests the nextCRN() method
+     */
+    public void testNextCRN()
+    {
+
+    }
+
+    /**
+     * tests the parseCRN() method
+     */
+    public void testParseCRN()
+    {
+
+    }
+
+    public void testParseCourse()
+    {
+
+    }
+
+    public void testParseTitle()
+    {
+
+    }
+
+    public void testParseType()
+    {
+
+    }
+
+    public void testParseHrs()
+    {
+
+    }
+
+    public void testParseCapacity()
+    {
+
+    }
+
+    public void testParseInstructor()
+    {
+
+    }
+
+    public void testParseDays()
+    {
+
+    }
+
+    public void testParseBegin()
+    {
+
+    }
+
+    public void testParseEnd()
+    {
+
+    }
+
+    public void testParseLocation()
+    {
+
+    }
+
+    public void testParseExam()
+    {
+
+    }
 }
