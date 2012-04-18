@@ -299,11 +299,14 @@ public class Section
 
  // ----------------------------------------------------------
     /**
-     * @param additionalTime the AdditionalTime to add
+     * Add a new AdditionalTime to this Section
+     * @return a reference to the newly added AdditionalTime
      */
-    public void addAdditionalTimes(AdditionalTime additionalTime)
+    public AdditionalTime addAdditionalTime()
     {
-        this.additionalTimes.add(additionalTime);
+        AdditionalTime temp = new AdditionalTime();
+        additionalTimes.add(temp);
+        return temp;
     }
 
 
@@ -315,9 +318,9 @@ public class Section
      *  @author cmbuck
      *  @version Apr 11, 2012
      */
-    public class AdditionalTime
+    public class AdditionalTime extends Section
     {
-        private String additionalDays;
+        private ArrayList<Day> additionalDays;
         private Time additionalBegin;
         private Time additionalEnd;
         private String additionalLocation;
@@ -327,7 +330,7 @@ public class Section
         /**
          * @return the days
          */
-        public String getDays()
+        public ArrayList<Day> getDays()
         {
             return additionalDays;
         }
@@ -359,9 +362,16 @@ public class Section
         /**
          * @param days the days to set
          */
-        public void setDays(String days)
+        public void setDays(ArrayList<Day> days)
         {
             this.additionalDays = days;
+        }
+        /**
+         * @param day the day to add
+         */
+        public void addDay(Day day)
+        {
+            additionalDays.add(day);
         }
         // ----------------------------------------------------------
         /**

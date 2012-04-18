@@ -237,7 +237,11 @@ public class DataHandlerTest
     @Test
     public void testParseBegin()
     {
-
+        String begin = "2:20PM";
+        String returned[] = begin.split("[^0-9]");
+        assertEquals(2, returned.length);
+        assertEquals("2", returned[0]);
+        assertEquals("20", returned[1]);
     }
 
     /**

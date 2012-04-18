@@ -1,5 +1,7 @@
 package library;
 
+import static org.junit.Assert.*;
+import library.Section.AdditionalTime;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
@@ -162,25 +164,36 @@ public class DataHandler
             currentSection = new Section();
 
             //start parsing
-            parseCRN(cleanedTimetable, index, currentSection);
-            parseCourse(cleanedTimetable, index, currentSection);
-            parseTitle(cleanedTimetable, index, currentSection);
-            parseType(cleanedTimetable, index, currentSection);
-            parseHrs(cleanedTimetable, index, currentSection);
-            parseCapacity(cleanedTimetable, index, currentSection);
-            parseInstructor(cleanedTimetable, index, currentSection);
-            parseDays(cleanedTimetable, index, currentSection);
-            parseBegin(cleanedTimetable, index, currentSection);
-            parseEnd(cleanedTimetable, index, currentSection);
-            parseLocation(cleanedTimetable, index, currentSection);
-            parseExam(cleanedTimetable, index, currentSection);
+            parseCRN(cleanedTimetable, index++, currentSection);
+            parseCourse(cleanedTimetable, index++, currentSection);
+            parseTitle(cleanedTimetable, index++, currentSection);
+            parseType(cleanedTimetable, index++, currentSection);
+            parseHrs(cleanedTimetable, index++, currentSection);
+            parseCapacity(cleanedTimetable, index++, currentSection);
+            parseInstructor(cleanedTimetable, index++, currentSection);
+            parseDays(cleanedTimetable, index++, currentSection);
+            parseBegin(cleanedTimetable, index++, currentSection);
+            parseEnd(cleanedTimetable, index++, currentSection);
+            parseLocation(cleanedTimetable, index++, currentSection);
+            parseExam(cleanedTimetable, index++, currentSection);
 
             //handle Additional Times
+            if (isAdditionalTime(cleanedTimetable, index))
+            {
+                index++;
+                //parse day, begin, end, location
+                AdditionalTime additional = currentSection.addAdditionalTime();
+
+                parseDays(cleanedTimetable, index++, additional);
+                parseBegin(cleanedTimetable, index++, additional);
+                parseEnd(cleanedTimetable, index++, additional);
+                parseLocation(cleanedTimetable, index++, additional);
+            }
+
 
             sectionList.add(currentSection);
         }
 
-        //return null for now
         return sectionList;
     }
 
@@ -198,7 +211,7 @@ public class DataHandler
     }
 
     /**
-     * Parses the next CRN and adds that data to the current Section
+     * Parses the CRN at the specified index and adds it to the current Section
      * @param cleanedTimetable the cleaned Timetable data
      * @param index the element in the array to parse for the CRN
      * @param currentSection reference to the Section currently being processed
@@ -250,14 +263,21 @@ public class DataHandler
 
     }
 
-
+    /**
+     * Parses the Hrs at the specified index and adds it to the currentSection
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the Hrs
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its Hrs populated
+     */
     public void parseHrs(
         String[] cleanedTimetable,
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
-
+        String hrsString = cleanedTimetable[index];
+        int hrsInt = Integer.parseInt(hrsString);
+        currentSection.setHrs(hrsInt);
     }
 
 
@@ -282,13 +302,30 @@ public class DataHandler
 
     }
 
-
+    /**
+     * Parses the days this section meets
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the Days
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its Days populated
+     */
     public void parseDays(
         String[] cleanedTimetable,
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        //possible Days are M,T,W,R,F
+        String days = cleanedTimetable[index];
+        if (days.contains("M"))
+            currentSection.addDay(Day.MONDAY);
+        if (days.contains("T"))
+            currentSection.addDay(Day.TUESDAY);
+        if (days.contains("W"))
+            currentSection.addDay(Day.WEDNESDAY);
+        if (days.contains("R"))
+            currentSection.addDay(Day.THURSDAY);
+        if (days.contains("F"))
+            currentSection.addDay(Day.FRIDAY);
 
     }
 
@@ -298,8 +335,9 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
-
+        String beginString = cleanedTimetable[index];
+        Time begin = parseTime(beginString);
+        currentSection.setBegin(begin);
     }
 
 
@@ -308,8 +346,35 @@ public class DataHandler
         int index,
         Section currentSection)
     {
-        // TODO Auto-generated method stub
+        String endString = cleanedTimetable[index];
+        Time end = parseTime(endString);
+        currentSection.setEnd(end);
+    }
 
+
+    /**
+     * Parses a time string into the Time object.
+     * @param time the time string (ex. 2:20PM)
+     * @return the Time object representing the specified time
+     */
+    public Time parseTime(String time)
+    {
+
+        String split[] = time.split("[^0-9]");
+        int hour, minute;
+        hour = Integer.parseInt(split[0]);
+        minute = Integer.parseInt(split[1]);
+
+        String meridiem = time.substring(time.length()-2);
+        if (meridiem.equalsIgnoreCase("PM"))
+        {
+            hour %= 12; //handles case when hour is between 12:00pm and 12:59pm
+            hour += 12;
+        }
+
+        Time timeObj = new Time(hour, minute);
+
+        return timeObj;
     }
 
 
@@ -335,5 +400,24 @@ public class DataHandler
     }
 
 
+    /**
+     * Determines if this section has an Additional Time
+     * @param cleanedTimetable cleaned timetable data array
+     * @param index the index of the element to be looked at
+     * @return whether the specified index specifies it is an Additional Time
+     */
+    public boolean isAdditionalTime(String[] cleanedTimetable, int index)
+    {
+        //assumes that "* Additional Times *" is the only possible marker
+        String str = cleanedTimetable[index];
+        if (str.equalsIgnoreCase("* Additional Times *"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
