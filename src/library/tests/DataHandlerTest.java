@@ -1,6 +1,7 @@
 package library.tests;
 
 import static org.junit.Assert.*;
+import library.Time;
 import library.Section;
 import org.junit.Test;
 import library.DataHandler;
@@ -44,8 +45,6 @@ public class DataHandlerTest
         assertEquals("\n<p>123", dh.cutData(data2));
         assertEquals("\n<p>123", dh.cutData(data3));
         assertEquals("", dh.cutData(data4));
-
-        //TODO: Add more test cases
     }
 
     /**
@@ -237,7 +236,17 @@ public class DataHandlerTest
     @Test
     public void testParseBegin()
     {
+        String str[] = {"2:20PM", "12:10PM", "9:05AM"};
+        Time times[] = {new Time(14, 20), new Time(12, 10), new Time(9, 05)};
+        assertNull(testSection.getBegin());
+        dh.parseBegin(str, 0, testSection);
+        assertEquals(times[0], testSection.getBegin());
 
+        dh.parseBegin(str, 1, testSection);
+        assertEquals(times[1], testSection.getBegin());
+
+        dh.parseBegin(str, 2, testSection);
+        assertEquals(times[2], testSection.getBegin());
     }
 
     /**
@@ -246,7 +255,17 @@ public class DataHandlerTest
     @Test
     public void testParseEnd()
     {
+        String str[] = {"2:20PM", "12:10PM", "9:05AM"};
+        Time times[] = {new Time(14, 20), new Time(12, 10), new Time(9, 05)};
+        assertNull(testSection.getEnd());
+        dh.parseEnd(str, 0, testSection);
+        assertEquals(times[0], testSection.getEnd());
 
+        dh.parseEnd(str, 1, testSection);
+        assertEquals(times[1], testSection.getEnd());
+
+        dh.parseEnd(str, 2, testSection);
+        assertEquals(times[2], testSection.getEnd());
     }
 
     /**
