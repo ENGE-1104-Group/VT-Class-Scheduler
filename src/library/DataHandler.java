@@ -1,6 +1,8 @@
 package library;
 
 import static org.junit.Assert.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import library.Section.AdditionalTime;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -206,8 +208,15 @@ public class DataHandler
      */
     public int nextCRN(String[] cleanedTimetable, int index)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        for (int i = index + 1; i < cleanedTimetable.length; i++)
+        {
+            String str = cleanedTimetable[i];
+            Pattern p = Pattern.compile("[\\d]{5}");
+            Matcher m = p.matcher(str);
+            if (m.find())
+                return i;
+        }
+        return -1;
     }
 
     /**
