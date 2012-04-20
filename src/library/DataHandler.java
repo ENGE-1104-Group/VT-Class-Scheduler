@@ -20,6 +20,7 @@ import java.util.List;
 public class DataHandler
 {
     private String data;
+    private List<Section> sections;
 
     /**
      * This method sets the preprocessed data; the results from the Timetable
@@ -30,7 +31,18 @@ public class DataHandler
         data = preprocessed;
     }
 
+    /**
+     * Get the processed list of Sections
+     * @return the list of Sections
+     */
+    public List<Section> getSections()
+    {
+        return sections;
+    }
 
+    /**
+     * Process the returned Timetable HTML data to obtain the list of Sections
+     */
     public void processData()
     {
         if (data != null)
@@ -42,8 +54,10 @@ public class DataHandler
             String dataArray[];
             dataArray = splitAndRemoveEmptyLines(data);     //remove empty lines
 
-            //make sure it isnt an error
+            //TODO: make sure it isnt an error
+
             //make list of sections (parse)
+            sections = parseData(dataArray);
         }
         else
         {
@@ -51,7 +65,7 @@ public class DataHandler
         }
 
         //set preprocessed to null once we are done with it
-        //to prevent errors if this method is called twice
+        //to prevent errors if this method is called twice?
         data = null;
     }
 
@@ -209,7 +223,7 @@ public class DataHandler
      */
     public int nextCRN(String[] cleanedTimetable, int index)
     {
-        for (int i = index + 1; i < cleanedTimetable.length; i++)
+        for (int i = index; i < cleanedTimetable.length; i++)
         {
             String str = cleanedTimetable[i];
             Pattern p = Pattern.compile("[\\d]{5}");

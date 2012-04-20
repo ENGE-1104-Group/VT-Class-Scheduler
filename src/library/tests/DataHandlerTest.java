@@ -1,6 +1,7 @@
 package library.tests;
 
 import static org.junit.Assert.*;
+import java.util.List;
 import library.Time;
 import library.Section;
 import org.junit.Test;
@@ -41,10 +42,12 @@ public class DataHandlerTest
         String data2 = "<HTML>asdf\n<b>asdf</b> </HTML>\n<p>123";
         String data3 = "<html>asdf\nasdf </html>\n<p>123";
         String data4 = "<html>asdf\nasdf \n<p>123</html>";
+        String data5 = "asdf1234";
         assertEquals("\n 123", dh.cutData(data1));
         assertEquals("\n<p>123", dh.cutData(data2));
         assertEquals("\n<p>123", dh.cutData(data3));
         assertEquals("", dh.cutData(data4));
+        assertEquals("asdf123", dh.cutData(data5));
     }
 
     /**
@@ -145,9 +148,37 @@ public class DataHandlerTest
         int returned1 = dh.nextCRN(data1, 0);
 
         assertEquals(expected1, returned1);
-        assertEquals(-1, dh.nextCRN(data1, 13));
+        assertEquals(-1, dh.nextCRN(data1, 14));
+
+    }
 
 
+    /**
+     * tests the parseData() method
+     */
+    @Test
+    public void testParseData()
+    {
+        String data1[] = {"92084",
+                          "ECE-1574",
+                          "Engr Problem Solving with C++",
+                          "L",
+                          "3",
+                          "50",
+                          "Staff",
+                          "M W     ",
+                          "8:00AM",
+                          "8:50AM",
+                          "RAND 331",
+                          "08M",
+                          "* Additional Times *",
+                          "T      ",
+                          "5:00PM",
+                          "6:50PM",
+                          "RAND 331"};
+
+        List<Section> returned1 = dh.parseData(data1);
+        assertEquals(1, returned1.size());
     }
 
     /**

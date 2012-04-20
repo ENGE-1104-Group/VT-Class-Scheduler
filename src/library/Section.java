@@ -30,6 +30,16 @@ public class Section
     private ArrayList<AdditionalTime> additionalTimes;
 
 
+    /**
+     * Constructs a new Section object
+     */
+    public Section()
+    {
+        days = new ArrayList<Day>();
+        additionalTimes = new ArrayList<AdditionalTime>();
+    }
+
+
     // ----------------------------------------------------------
     /**
      * @return the crn
@@ -324,6 +334,15 @@ public class Section
         private Time additionalBegin;
         private Time additionalEnd;
         private String additionalLocation;
+
+
+        /**
+         * Constructs a new AdditionalTime
+         */
+        public AdditionalTime()
+        {
+            additionalDays = new ArrayList<Day>();
+        }
 
 
         // ----------------------------------------------------------

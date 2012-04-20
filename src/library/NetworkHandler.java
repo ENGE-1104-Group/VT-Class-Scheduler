@@ -115,6 +115,13 @@ public class NetworkHandler
      */
     public void searchTimetable(Search search)
     {
+        if (timetableURL == null)
+        {
+            System.err.println("ERROR: Timetable URL is null");
+            timetableResults = null;
+            return;
+        }
+
         String postDataString = generatePostDataString(search);
         String result = null;
 
