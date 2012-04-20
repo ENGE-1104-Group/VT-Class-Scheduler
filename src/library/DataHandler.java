@@ -37,6 +37,7 @@ public class DataHandler
         {
             data = cutData(data);              //cut to </HTML>
             data = removeTags(data);           //remove tags
+            data = removeGarbage(data);        //remove garbage
 
             String dataArray[];
             dataArray = splitAndRemoveEmptyLines(data);     //remove empty lines
@@ -152,7 +153,7 @@ public class DataHandler
      * @param cleanedTimetable the cleaned Timetable data string
      * @return the List of Sections
      */
-    public List<Section> parseString(String[] cleanedTimetable)
+    public List<Section> parseData(String[] cleanedTimetable)
     {
 
         Section currentSection;

@@ -117,5 +117,11 @@ public class Time
         return true;
     }
 
+    @Override
+    public String toString()
+    {
+        return String.format("%1$02d:%2$02d", this.hour, this.minute);
+    }
+
 
 }
