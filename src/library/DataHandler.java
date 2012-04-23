@@ -254,7 +254,13 @@ public class DataHandler
 
     }
 
-
+    /**
+     * Parses the course that was requested
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the course
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its course set
+     */
     public void parseCourse(
         String[] cleanedTimetable,
         int index,
@@ -264,6 +270,13 @@ public class DataHandler
     	currentSection.setCourse(courseString);
     }
 
+    /**
+     * Parses the title of the course
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the title
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its title set
+     */
 
     public void parseTitle(
         String[] cleanedTimetable,
@@ -276,6 +289,13 @@ public class DataHandler
     }
 
 
+    /**
+     * Parses the type of the requested class
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the type
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its type set
+     */
     public void parseType(
         String[] cleanedTimetable,
         int index,
@@ -303,6 +323,13 @@ public class DataHandler
         currentSection.setHrs(hrsInt);
     }
 
+    /**
+     * Parses the capicity, seats availaible oout of total seats
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the capicity
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its capcaity set
+     */
 
     public void parseCapacity(
         String[] cleanedTimetable,
@@ -314,6 +341,13 @@ public class DataHandler
 
     }
 
+    /**
+     * Parses the instructor of the section
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the instructor
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its instructor set
+     */
 
     public void parseInstructor(
         String[] cleanedTimetable,
@@ -400,6 +434,13 @@ public class DataHandler
         return timeObj;
     }
 
+    /**
+     * Parses the location of the class
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the location
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its location set
+     */
 
     public void parseLocation(
         String[] cleanedTimetable,
@@ -411,6 +452,13 @@ public class DataHandler
 
     }
 
+    /**
+     * Parses the code for the corresponding exam for the class
+     * @param cleanedTimetable the cleaned Timetable data
+     * @param index the element in the array to parse for the exam code
+     * @param currentSection reference to the Section currently being processed
+     * @post currentSection has its exam code set
+     */
 
     public void parseExam(
         String[] cleanedTimetable,
