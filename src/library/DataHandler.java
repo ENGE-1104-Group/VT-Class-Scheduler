@@ -195,13 +195,25 @@ public class DataHandler
             parseHrs(cleanedTimetable, index++, currentSection);
             parseCapacity(cleanedTimetable, index++, currentSection);
             parseInstructor(cleanedTimetable, index++, currentSection);
-            //check if online
-            parseDays(cleanedTimetable, index++, currentSection);
-            parseBegin(cleanedTimetable, index++, currentSection);
-            parseEnd(cleanedTimetable, index++, currentSection);
-            parseLocation(cleanedTimetable, index++, currentSection);
-            parseExam(cleanedTimetable, index++, currentSection);
-
+            //check if (ARR)
+            if (isARR(cleanedTimetable, index, currentSection))
+            {
+                //dont parse days
+                index++;
+                //dont parse time(s)
+                index++;
+                //parse location normally
+                parseLocation(cleanedTimetable, index++, currentSection);
+                parseExam(cleanedTimetable, index++, currentSection);
+            }
+            else
+            {
+                parseDays(cleanedTimetable, index++, currentSection);
+                parseBegin(cleanedTimetable, index++, currentSection);
+                parseEnd(cleanedTimetable, index++, currentSection);
+                parseLocation(cleanedTimetable, index++, currentSection);
+                parseExam(cleanedTimetable, index++, currentSection);
+            }
             //handle Additional Times
             if (isAdditionalTime(cleanedTimetable, index))
             {
@@ -498,6 +510,11 @@ public class DataHandler
         {
             return false;
         }
+    }
+
+    public boolean isARR(String[] cleanedTimetable, int index)
+    {
+
     }
 
 }
