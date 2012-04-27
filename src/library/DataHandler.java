@@ -76,6 +76,7 @@ public class DataHandler
      */
     public String cutData(String str)
     {
+        /*
     	int index, index2;
     	index2=str.indexOf("</html>");
     	index=str.indexOf("</HTML>");
@@ -84,6 +85,11 @@ public class DataHandler
     	if (index==-1)
     		str=str.substring(index2+7,str.length());
         return str;
+        */
+        int index;
+        String searchString = "Search Results";
+        index = str.indexOf(searchString);
+        return str.substring(index + searchString.length());
     }
 
     /**
@@ -105,6 +111,8 @@ public class DataHandler
                     index++;
                 }
                 index++;
+
+                finalString += '\n';
             }
             else
             {
@@ -187,6 +195,7 @@ public class DataHandler
             parseHrs(cleanedTimetable, index++, currentSection);
             parseCapacity(cleanedTimetable, index++, currentSection);
             parseInstructor(cleanedTimetable, index++, currentSection);
+            //check if online
             parseDays(cleanedTimetable, index++, currentSection);
             parseBegin(cleanedTimetable, index++, currentSection);
             parseEnd(cleanedTimetable, index++, currentSection);

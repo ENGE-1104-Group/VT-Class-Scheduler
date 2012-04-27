@@ -55,6 +55,9 @@ public class TimetableLibrary
             search.setCourseNumber(courseNumber);
             networkHandler.searchTimetable(search);
             String rawData = networkHandler.getTimetableResults();
+            //System.out.println(rawData);
+            //System.out.println(rawData.contains("\n"));
+            //System.out.println(rawData.contains("\r"));
             dataHandler.setPreprocessedData(rawData);
             dataHandler.processData();
             List<Section> sections = dataHandler.getSections();
