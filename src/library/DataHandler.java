@@ -196,7 +196,7 @@ public class DataHandler
             parseCapacity(cleanedTimetable, index++, currentSection);
             parseInstructor(cleanedTimetable, index++, currentSection);
             //check if (ARR)
-            if (isARR(cleanedTimetable, index, currentSection))
+            if (isARR(cleanedTimetable, index))
             {
                 //dont parse days
                 index++;
@@ -514,7 +514,15 @@ public class DataHandler
 
     public boolean isARR(String[] cleanedTimetable, int index)
     {
-
+        String str = cleanedTimetable[index];
+        if (str.equalsIgnoreCase("(AAR)"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
