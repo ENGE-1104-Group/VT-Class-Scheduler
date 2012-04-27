@@ -340,7 +340,16 @@ public class DataHandler
         Section currentSection)
     {
         String hrsString = cleanedTimetable[index];
-        int hrsInt = Integer.parseInt(hrsString);
+        int hrsInt;
+
+        try
+        {
+            hrsInt = Integer.parseInt(hrsString);
+        }
+        catch (NumberFormatException e)
+        {
+            hrsInt = -1;
+        }
         currentSection.setHrs(hrsInt);
     }
 
