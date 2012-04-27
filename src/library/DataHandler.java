@@ -180,12 +180,16 @@ public class DataHandler
         Section currentSection;
         List<Section> sectionList = new LinkedList<Section>();
         int index = 0;
+        int nextCRNIndex;
 
         //parse sections
         //while there is another section
         while ((index = nextCRN(cleanedTimetable, index)) != -1)
         {
             currentSection = new Section();
+
+            //predict the next CRN index
+            nextCRNIndex = nextCRN(cleanedTimetable, index + 1);
 
             //start parsing
             parseCRN(cleanedTimetable, index++, currentSection);
@@ -227,8 +231,13 @@ public class DataHandler
                 parseLocation(cleanedTimetable, index++, additional);
             }
 
-
             sectionList.add(currentSection);
+
+            //check for Timetable formatting errors
+            if (nextCRNIndex < index && nextCRNIndex != -1)
+            {
+                index = nextCRNIndex;
+            }
         }
 
         return sectionList;
@@ -423,6 +432,7 @@ public class DataHandler
         Section currentSection)
     {
         String beginString = cleanedTimetable[index];
+
         Time begin = parseTime(beginString);
         currentSection.setBegin(begin);
     }
@@ -448,9 +458,16 @@ public class DataHandler
     {
 
         String split[] = time.split("[^0-9]");
-        int hour, minute;
-        hour = Integer.parseInt(split[0]);
-        minute = Integer.parseInt(split[1]);
+        int hour = 0, minute = 0;
+        try
+        {
+            hour = Integer.parseInt(split[0]);
+            minute = Integer.parseInt(split[1]);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Time parsing failed");
+        }
 
         String meridiem = time.substring(time.length()-2);
         if (meridiem.equalsIgnoreCase("PM"))
@@ -524,7 +541,7 @@ public class DataHandler
     public boolean isARR(String[] cleanedTimetable, int index)
     {
         String str = cleanedTimetable[index];
-        if (str.equalsIgnoreCase("(AAR)"))
+        if (str.contains("ARR"))
         {
             return true;
         }
@@ -532,6 +549,8 @@ public class DataHandler
         {
             return false;
         }
+
+
     }
 
 }

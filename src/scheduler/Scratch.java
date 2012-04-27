@@ -15,13 +15,14 @@ public class Scratch
 
         List<Section> sections;
 
-        sections = tl.getSections("201201", "PHYS", "2305");
+        sections = tl.getSections("201201", "MATH", "");
 
         System.out.println(sections.size());
         for (Section s : sections)
         {
             System.out.println(s.getCourse() + " : " + s.getInstructor() +
-                ", " + s.getDays() + ", " + s.getBegin() + " - " + s.getEnd());
+                ", " + s.getDays() + ", " + s.getBegin() + " - " + s.getEnd() +
+                ", " + s.getExam());
         }
     }
 }
