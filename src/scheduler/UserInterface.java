@@ -1,5 +1,7 @@
 package scheduler;
 
+import java.util.Scanner;
+
 /**
  * // -------------------------------------------------------------------------
 /**
@@ -26,7 +28,9 @@ public class UserInterface
      */
     public String getUserInput()
     {
-
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        return str;
     }
 
     /**
