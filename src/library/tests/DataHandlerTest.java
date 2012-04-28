@@ -38,16 +38,16 @@ public class DataHandlerTest
     @Test
     public void testCutData()
     {
-        String data1 = "asdf\nasdf </HTML>\n 123";
-        String data2 = "<HTML>asdf\n<b>asdf</b> </HTML>\n<p>123";
-        String data3 = "<html>asdf\nasdf </html>\n<p>123";
+        String data1 = "asdf\nasdf </HTML>Search Results\n 123";
+        String data2 = "<HTML>asdf\n<b>asdf</b> </HTML>\n<p>123Search Results";
+        String data3 = "<html>asdf\nasdf </html>Search Results\n<p>123";
         String data4 = "<html>asdf\nasdf \n<p>123</html>";
-        String data5 = "asdf1234";
+        String data5 = "Search Resultsasdf1234";
         assertEquals("\n 123", dh.cutData(data1));
-        assertEquals("\n<p>123", dh.cutData(data2));
+        assertEquals("", dh.cutData(data2));
         assertEquals("\n<p>123", dh.cutData(data3));
         assertEquals("", dh.cutData(data4));
-        assertEquals("asdf123", dh.cutData(data5));
+        assertEquals("asdf1234", dh.cutData(data5));
     }
 
     /**
@@ -60,9 +60,9 @@ public class DataHandlerTest
         String data2 = "<font style='asdfasdfasdf'>blah\n</font>";
         String data3 = "<super tag \n and \n more...>123";
 
-        assertEquals("this is bold", dh.removeTags(data1));
-        assertEquals("blah\n", dh.removeTags(data2));
-        assertEquals("123", dh.removeTags(data3));
+        assertEquals("\nthis is bold\n", dh.removeTags(data1));
+        assertEquals("\nblah\n\n", dh.removeTags(data2));
+        assertEquals("\n123", dh.removeTags(data3));
     }
 
 

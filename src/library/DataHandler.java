@@ -89,6 +89,8 @@ public class DataHandler
         int index;
         String searchString = "Search Results";
         index = str.indexOf(searchString);
+        if(index==-1)
+        	return"";
         return str.substring(index + searchString.length());
     }
 
