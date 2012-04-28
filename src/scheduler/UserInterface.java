@@ -11,6 +11,10 @@ package scheduler;
  */
 public class UserInterface
 {
+    private final String message = "Enter a menu choice";
+    private final String[] mainMenu = { "Search" +
+                                        "Display" +
+                                        "Exit"};
 
     /**
      * Displays the main menu of options to the user
