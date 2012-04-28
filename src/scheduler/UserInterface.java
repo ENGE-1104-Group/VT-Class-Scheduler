@@ -17,6 +17,15 @@ public class UserInterface
     private final String[] mainMenu = { "Search" +
                                         "Display" +
                                         "Exit"};
+    private Scanner scanner;
+
+    /**
+     * Constructor for UserInterface
+     */
+    public UserInterface()
+    {
+        scanner = new Scanner(System.in);
+    }
 
     /**
      * Displays the main menu of options to the user
@@ -32,7 +41,6 @@ public class UserInterface
      */
     public String getUserInput()
     {
-        Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
         return str;
     }
