@@ -17,8 +17,8 @@ import library.TimetableLibrary;
 public class UserInterface
 {
     private final String message = "Enter a menu choice";
-    private final String[] mainMenu = { "Search" +
-                                        "Display" +
+    private final String[] mainMenu = { "Search",
+                                        "Display",
                                         "Exit"};
     private Scanner scanner;
     private TimetableLibrary library;
@@ -50,7 +50,13 @@ public class UserInterface
      */
     public void displayMenu()
     {
-
+        System.out.println();
+        System.out.println("--Main Menu--");
+        System.out.println(message);
+        for (int i = 0; i < mainMenu.length; i++)
+        {
+            System.out.println(mainMenu[i]);
+        }
     }
 
     /**

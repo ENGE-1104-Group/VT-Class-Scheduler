@@ -12,5 +12,14 @@ public class Scheduler
     {
         DataModel dataModel = new DataModel();
         TimetableLibrary timetableLibrary = new TimetableLibrary(timetableURL);
+        UserInterface ui = new UserInterface(timetableLibrary, dataModel);
+
+        String input;
+        while (!ui.shouldExit())
+        {
+            ui.displayMenu();
+            input = ui.getUserInput();
+            ui.handleInput(input);
+        }
     }
 }
